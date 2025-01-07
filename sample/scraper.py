@@ -48,6 +48,7 @@ for item_box in item_boxes:
     print(item_title)
 
     # item 링크
+    # TODO link 추출 필요
     item_link = item_box.find("div", class_="img").findChild("a")["href"]
     print(item_link)
 
@@ -56,8 +57,15 @@ for item_box in item_boxes:
     print(item_price)
     
     # item 이미지
+    item_img = item_box.find("div", class_="img").findChild("a").find("img")["src"]
+    print(item_img)
     print()
 
-# for item in item_box:
-#     item_link = item.find("a").get("href")
-#     print(item_link)
+    item = {
+        "name": item_title,
+        "url": item_link,
+        "price": item_price,
+        "image": item_img
+    }
+
+    result.append(item)
