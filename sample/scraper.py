@@ -26,6 +26,7 @@ headers = {
 
 ## Error
 # 200 OK
+# 401 Unauthorized
 # 403 Forbidden
 # 404 Not Found
 # 418 I’m a teapot
