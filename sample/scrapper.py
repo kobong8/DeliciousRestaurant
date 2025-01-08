@@ -3,7 +3,7 @@ import requests
 from typing import List
 import re
 
-class Scraper:
+class Scrapper:
     def __init__(self):
         self.__url = "https://category.gmarket.co.kr/listview/L100000002.aspx"
         self.__headers = {
@@ -12,7 +12,6 @@ class Scraper:
 
     def do(self):
         response = requests.get(self.__url, headers=self.__headers)
-        print(f"response status code: {response.status_code}")
 
         soup = BeautifulSoup(response.text, "html.parser")
         list_box = soup.find("div", class_="plus-goods")
@@ -46,6 +45,6 @@ class Scraper:
         return result
 
 if __name__ == "__main__":
-    scraper = Scraper()
+    scraper = Scrapper()
     items = scraper.do()
     print(items)
