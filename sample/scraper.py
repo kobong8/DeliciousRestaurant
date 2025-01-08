@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from typing import List
+import re
 
 # regex 01(example) : [?|&](\w+)=([^\w+])
 # regex 02(replace) : (\w+)=([^\w+])
@@ -49,7 +50,10 @@ for item_box in item_boxes:
 
     # item 링크
     # TODO link 추출 필요
-    item_link = item_box.find("div", class_="img").findChild("a")["href"]
+    # item_link = item_box.find("div", class_="img").findChild("a")["href"]
+    item_link = item_box.find("div", class_="img").findChild("a").attrs["href"]
+    pattern = r"https?://[^\s,']+"
+    item_link = re.findall(pattern, item_link)[0]
     print(item_link)
 
     # item 가격
@@ -69,3 +73,5 @@ for item_box in item_boxes:
     }
 
     result.append(item)
+
+print(item)
