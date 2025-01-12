@@ -23,8 +23,14 @@ python manage.py createsuperuser
 ```
 
 - TODO LIST
-1. Not Found: /favicon.ico
+1. Not Found: /favicon.ico - runserver에서 발생
 ```text
 Not Found: /favicon.ico
 [DD/MMM/YYYY HH:MM:SS] "GET /favicon.ico HTTP/1.1" 404 2206
+```
+
+2. [CLOSED] Pillow is not installed - models.ImageField를 사용하려고 할 경우 발생
+```text
+ERRORS: restaurant.Restaurant.image: (fields.E210) Cannot use ImageField because Pillow is not installed. 
+        HINT: Get Pillow at https://pypi.org/project/Pillow/ or run command "python -m pip install Pillow".
 ```
