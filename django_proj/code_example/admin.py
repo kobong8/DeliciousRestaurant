@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models_lecture import (
+from .models import (
     Restaurant,
     RestaurantCategory,
     RestaurantStatistics,
