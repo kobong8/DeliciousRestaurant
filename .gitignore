@@ -3,4 +3,4 @@
 __pycache__
 
 # setting files
-django/proj/settings.py
+django_proj/proj/settings.py
