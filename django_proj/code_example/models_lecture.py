@@ -11,7 +11,7 @@ class Restaurant(models.Model):
     latitude = models.DecimalField("위도", max_digits=9, decimal_places=6, db_index=True)
     longitude = models.DecimalField("경도", max_digits=9, decimal_places=6, db_index=True)
     rating = models.DecimalField("별점", max_digits=3, decimal_places=2, db_index=True)
-    rating_count = models.PositiveIntegerField("별점 개수")
+    rating_count = models.PositiveIntegerField("별점 개수", null=True)
     keywords = models.ManyToManyField("Keyword", blank=True)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
     updated_at = models.DateTimeField(auto_now=True, db_index=True)
