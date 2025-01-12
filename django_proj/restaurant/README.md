@@ -14,10 +14,11 @@ image = models.ImageField(upload_to='restaurants/', null=True, blank=True)
 keywords = models.ManyToManyField("Keyword", blank=True)
 ```
 
-4. class Meta 역할
+4. [*CLOSED] class Meta 역할 - 해당 클래스가 표현되는 방식을 결정, 복수형을 "가게"에서 "가게들"로 수정
 ```python
 class Meta:
     verbose_name = "가게"
-    verbose_name_plural = "가게"
+    # verbose_name_plural = "가게"
+    verbose_name_plural = "가게들"
     ordering = ["-rating"]
 ```

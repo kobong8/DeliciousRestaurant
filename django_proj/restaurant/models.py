@@ -18,7 +18,7 @@ class Restaurant(models.Model):
 
     class Meta:
         verbose_name = "가게"
-        verbose_name_plural = "가게"
+        verbose_name_plural = "가게들"
         ordering = ["-rating"]
 
     def __str__(self):
@@ -33,7 +33,7 @@ class RestaurantStatistics(models.Model):
 
     class Meta:
         verbose_name = "가게 통계"
-        verbose_name_plural = "가게 통계"
+        verbose_name_plural = "가게 통계 집합"
 
     def __str__(self):
         return self.restaurant.name
@@ -43,7 +43,7 @@ class Keyword(models.Model):
 
     class Meta:
         verbose_name = "키워드"
-        verbose_name_plural = "키워드"
+        verbose_name_plural = "키워드 모음"
 
     def __str__(self):
         return self.name
