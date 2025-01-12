@@ -3,20 +3,38 @@
 
 - CODE
 ```text
+"c:\Program Files\MySQL\MySQL Server 8.4\bin\mysql.exe" -uroot -p
+```
+
+```sql
+SHOW DATABASES;
+CREATE DATABASE {database name};
+CREATE USER '{user name}'@'%' IDENTIFIED BY '{password}';
+GRANT ALL PRIVILEGES ON {database name}.* TO '{user name}'@'%';
+FLUSH PRIVILEGES;
+```
+
+```text
 python manage.py runserver
 python manage.py migrate
+```
 
+```text
 python manage.py startapp restaurant
 -> "setting.py" "INSTALLED_APPS"에 추가
 python manage.py runserver
+```
 
+```text
 -> models에 Restaurant 생성 후
 1. python manage.py makemigrations -> 모든 모델
 2. python manage.py makemigrations {model name} -> 특정 모델
    ex) python manage.py makemigrations restaurant -> 특정 모델
 -> migrations folder에 0001_initial.py 생성
 pyton manage.py migrate
+```
 
+```text
 python manage.py createsuperuser
 -> setting.py LANGUAGE_CODE = 'ko-kr'
 -> 'en-us' --> 'ko-kr'
