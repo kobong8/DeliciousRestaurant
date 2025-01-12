@@ -9,3 +9,6 @@ class Restaurant(models.Model):
     rating = models.SmallIntegerField()
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.name}"
