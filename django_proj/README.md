@@ -13,5 +13,6 @@ python manage.py runserver
 -> models에 Restaurant 생성 후
 1. python manage.py makemigrations -> 모든 모델
 2. python manage.py makemigrations {model name} -> 특정 모델
-    ex) python manage.py makemigrations restaurant -> 특정 모델
+   ex) python manage.py makemigrations restaurant -> 특정 모델
+pyton manage.py migrate
 ```
