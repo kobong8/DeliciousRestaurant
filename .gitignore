@@ -1,3 +1,6 @@
-# setting files
+# configuration files
 .idea
 __pycache__
+
+# setting files
+django/proj/settings.py
