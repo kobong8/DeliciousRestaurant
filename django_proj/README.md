@@ -2,7 +2,7 @@
 1. setting.py 파일은 DB 정보를 포함하고 있어 제외됨
 
 - CODE
-```text
+```powershell
 "c:\Program Files\MySQL\MySQL Server 8.4\bin\mysql.exe" -uroot -p
 ```
 
@@ -14,18 +14,18 @@ GRANT ALL PRIVILEGES ON {database name}.* TO '{user name}'@'%';
 FLUSH PRIVILEGES;
 ```
 
-```text
+```powershell
 python manage.py runserver
 python manage.py migrate
 ```
 
-```text
+```powershell
 python manage.py startapp restaurant
 -> "setting.py" "INSTALLED_APPS"에 추가
 python manage.py runserver
 ```
 
-```text
+```powershell
 -> models에 Restaurant 생성 후
 1. python manage.py makemigrations -> 모든 모델
 2. python manage.py makemigrations {model name} -> 특정 모델
@@ -42,6 +42,7 @@ python manage.py createsuperuser
 
 - TODO LIST
 1. Not Found: /favicon.ico - runserver에서 발생
+2. favicon은 웹페이지 탭에 작게 보이는 이미지
 ```text
 Not Found: /favicon.ico
 [DD/MMM/YYYY HH:MM:SS] "GET /favicon.ico HTTP/1.1" 404 2206
