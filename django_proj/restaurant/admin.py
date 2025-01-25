@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (
     Restaurant,
-    # RestaurantCategory,
+    RestaurantCategory,
     RestaurantStatistics,
     Keyword,
 )
@@ -10,11 +10,6 @@ from .models import (
 @admin.action(description="선택된 가게의 별점 초기화")
 def reset_rating(modeladmin, request, queryset):
     queryset.update(rating=0.0, rating_count=0)
-
-
-@admin.action(description="선택된 가게의 별점을 5점으로 강제설정")
-def set_5_rating(modeladmin, request, queryset):
-    queryset.update(rating=5.0, rating_count=1)
 
 
 @admin.register(Restaurant)
@@ -33,7 +28,7 @@ class RestaurantAdmin(admin.ModelAdmin):
     list_filter = ["rating", "category"]
     search_fields = ["name", "phone"]
     ordering = ["-id"]
-    actions = [reset_rating, set_5_rating]
+    actions = [reset_rating]
     autocomplete_fields = ["keywords"]
 
 
@@ -44,7 +39,6 @@ class KeywordAdmin(admin.ModelAdmin):
     search_fields = ["name"]
 
 
-# admin.site.register(RestaurantCategory)
-
+admin.site.register(RestaurantCategory)
 
 admin.site.register(RestaurantStatistics)
