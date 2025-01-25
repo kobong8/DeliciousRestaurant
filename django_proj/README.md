@@ -34,6 +34,12 @@ python manage.py runserver
 pyton manage.py migrate
 ```
 
+```powershell
+python manage.py makemigrations
+python manage.py migrate
+python runserver
+```
+
 ```text
 python manage.py createsuperuser
 -> setting.py LANGUAGE_CODE = 'ko-kr'
