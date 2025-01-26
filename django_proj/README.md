@@ -40,10 +40,14 @@ python manage.py migrate
 python runserver
 ```
 
-```text
+```powershell
 python manage.py createsuperuser
 -> setting.py LANGUAGE_CODE = 'ko-kr'
 -> 'en-us' --> 'ko-kr'
+```
+
+```powershell
+python manage.py changepassword USER_ID
 ```
 
 - TODO LIST

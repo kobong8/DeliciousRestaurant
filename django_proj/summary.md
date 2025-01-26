@@ -31,3 +31,16 @@
 | 403  | Forbidden             |   
 | 404  | Not Found             |    
 | 500  | Internal Server Error |
+
+<br/>
+
+```text:requirements.txt
+django==5.0.6
+mysqlclient==2.2.1
+Pillow==10.3.0
+
+djangorestframework==3.14.0
+markdown==3.5.1
+django-filter==23.5
+drf-spectacular==0.27.0
+```
