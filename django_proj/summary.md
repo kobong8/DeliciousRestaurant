@@ -1,4 +1,4 @@
-- Django 코드 개발 단계
+## Django 코드 개발 단계
 
 1. Model: 요구사항에 맞추어 모델에 속성 추가(모델과 함수 등을 추가)
 
@@ -8,7 +8,7 @@
 
 4. Template: 필요한 경우 HTML 기반의 템플릿 작성(뷰에서 렌터링)
 
-- HTTP 상태 코드
+### HTTP 상태 코드
 1XX: 정보 응답
 <br/>
 2XX: 성공 응답
@@ -31,4 +31,3 @@
 | 403  | Forbidden             |   
 | 404  | Not Found             |    
 | 500  | Internal Server Error |
-
