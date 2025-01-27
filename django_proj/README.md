@@ -82,3 +82,28 @@ Please select a fix:
 # rating_count = models.PositiveIntegerField("별점 개수")
 rating_count = models.PositiveIntegerField("별점 개수", null=True)
 ```
+
+5. [CLOSED] .env 파일 사용하기
+AttributeError: 'NoneType' object has no attribute 'startswith'
+```text
+# requirements.txt
+django-environ==0.11.2
+```
+
+```python
+import os
+import environ
+
+environ.Env.read_env(".env") # .env 파일 불러오기
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get("DB_NAME"),
+        'USER': os.environ.get("DB_USER"),
+        'PASSWORD': os.environ.get("DB_PASSWORD"),
+        'HOST': os.environ.get("DB_HOST"),
+        # 'PORT': 'PORT',
+        'CHARSET': 'utf8mb4',
+    }
+}
+```

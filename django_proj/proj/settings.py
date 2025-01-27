@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 
 from django.conf.global_settings import LANGUAGE_CODE
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,13 +79,14 @@ WSGI_APPLICATION = 'proj.wsgi.application'
 
 # pip install mysqlcient
 # conda install mysqlclient - python 3.11.* , which conflicts with any installable versions previously reported.
+environ.Env.read_env(".env")
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get("DB_NAME", 'db_name'),
-        'USER': os.environ.get("DB_USER", "db_user"),
-        'PASSWORD': os.environ.get("DB_PASSWORD", "db_password"),
-        'HOST': os.environ.get("DB_HOST", "localhost"),
+        'NAME': os.environ.get("DB_NAME"),
+        'USER': os.environ.get("DB_USER"),
+        'PASSWORD': os.environ.get("DB_PASSWORD"),
+        'HOST': os.environ.get("DB_HOST"),
         # 'PORT': 'PORT',
         'CHARSET': 'utf8mb4',
     }

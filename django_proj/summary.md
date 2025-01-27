@@ -37,6 +37,8 @@
 ```text:requirements.txt
 django==5.0.6
 mysqlclient==2.2.1
+django_extensions==3.2.3
+django-environ==0.11.2
 Pillow==10.3.0
 
 djangorestframework==3.14.0
