@@ -46,3 +46,17 @@ markdown==3.5.1
 django-filter==23.5
 drf-spectacular==0.27.0
 ```
+
+1. Model 클래스 작성 - 모델/필드를 추가/수정/삭제
+2. makemigrations
+3. migrate
+4. 데이터 이전
+
+- migration 되돌리기
+```powershell
+python manage.py showmigrations
+python manage.py migrate 앱이름 이전마이크레이션번호
+(되돌릴 마이그레이션 파일 삭제)
+python manage.py makemigrations
+python manage.py migrate
+```

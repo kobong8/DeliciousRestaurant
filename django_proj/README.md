@@ -37,7 +37,7 @@ pyton manage.py migrate
 ```powershell
 python manage.py makemigrations
 python manage.py migrate
-python runserver
+python manage.py runserver
 ```
 
 ```powershell
