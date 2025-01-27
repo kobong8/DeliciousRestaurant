@@ -51,8 +51,8 @@ python manage.py changepassword USER_ID
 ```
 
 - TODO LIST
-1. Not Found: /favicon.ico - runserver에서 발생
-2. favicon은 웹페이지 탭에 작게 보이는 이미지
+1. [CLOSED] Not Found: /favicon.ico - runserver에서 발생 - favicon은 웹페이지 탭에 작게 보이는 이미지, 추가할 경우 오류 발생X
+
 ```text
 Not Found: /favicon.ico
 [DD/MMM/YYYY HH:MM:SS] "GET /favicon.ico HTTP/1.1" 404 2206
@@ -120,3 +120,11 @@ from restaurant.models import Restaurant
 # views.py
 from restaurant.models import Restaurant
 ```
+
+7. [TODO] templates - forms.py의 역할, views.py에 추가되는 내용들(생성 뷰, 수정 뷰)
+
+8. [TODO] 필드 등록 이후 실행에서 어떻게 바뀌는지에 대한 부분
+
+9. [TODO] 관계형 필드 생성하기, foreign key 설정 방법
+
+10. [TODO] 쿼리에서 "__" 사용을 어떻게 사용하는지
