@@ -34,6 +34,7 @@
 
 <br/>
 
+- requirements.txt
 ```text:requirements.txt
 django==5.0.6
 mysqlclient==2.2.1
