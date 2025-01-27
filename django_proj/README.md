@@ -107,3 +107,16 @@ DATABASES = {
     }
 }
 ```
+
+6. [CLOSED] from ..restaurant.models import Restaurant <br/>
+ImportError: attempted relative import beyond top-level package
+
+```python:serializers.py
+# serializers.py
+from restaurant.models import Restaurant
+```
+
+```python:veiws.py
+# views.py
+from restaurant.models import Restaurant
+```

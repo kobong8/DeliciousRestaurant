@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
-# TODO restaurant path check required
-from ..restaurant.models import Restaurant
+from restaurant.models import Restaurant
 
 
 class RestaurantSerializer(serializers.ModelSerializer):
