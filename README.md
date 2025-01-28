@@ -165,24 +165,32 @@ pre-commit uninstall --all
 pre-commit run
 [INFO] Initializing environment for https://github.com/pre-commit/pre-commit-hooks.
 [WARNING] repo `https://github.com/pre-commit/pre-commit-hooks` uses deprecated stage names (commit, push) which will be removed in a future version.  Hint: often `pre-commit autoupdate --repo https://github.com/pre-commit/pre-commit-hooks` will fix this.  if it does not -- consider reporting an issue to that repo.
-[INFO] Initializing environment for https://github.com/psf/black.
-[INFO] Initializing environment for https://github.com/pycqa/isort.
+...
 [WARNING] repo `https://github.com/pycqa/isort` uses deprecated stage names (commit, merge-commit, push) which will be removed in a future version.  Hint: often `pre-commit autoupdate --repo https://github.com/pycqa/isort` will fix this.  if it does not -- consider reporting an issue to that repo.
-[INFO] Initializing environment for https://github.com/pycqa/flake8.
-[INFO] Installing environment for https://github.com/pre-commit/pre-commit-hooks.
-[INFO] Once installed this environment will be reused.
-[INFO] This may take a few minutes...
-[INFO] Installing environment for https://github.com/psf/black.
-[INFO] Once installed this environment will be reused.
-[INFO] This may take a few minutes...
-[INFO] Installing environment for https://github.com/pycqa/isort.
-[INFO] Once installed this environment will be reused.
-[INFO] This may take a few minutes...
-[INFO] Installing environment for https://github.com/pycqa/flake8.
-[INFO] Once installed this environment will be reused.
-[INFO] This may take a few minutes...
+...
 trim trailing whitespace.............................(no files to check)Skipped
 fix end of files.....................................(no files to check)Skipped
+black................................................(no files to check)Skipped
+isort................................................(no files to check)Skipped
+flake8...............................................(no files to check)Skipped
+```
+완료 이후 적용할 때는 git add 및 git commit
+```powershell
+pre-commit run
+[ERROR] Your pre-commit configuration is unstaged.
+`git add .pre-commit-config.yaml` to fix this.
+```
+
+```powershell
+git commit -m "update version"
+[INFO] Initializing environment for https://github.com/pre-commit/pre-commit-hooks.
+[INFO] Initializing environment for https://github.com/psf/black.
+[INFO] Initializing environment for https://github.com/pycqa/isort.
+[INFO] Initializing environment for https://github.com/pycqa/flake8.
+[INFO] Installing environment for https://github.com/pre-commit/pre-commit-hooks.
+...
+trim trailing whitespace.................................................Passed
+fix end of files.........................................................Passed
 black................................................(no files to check)Skipped
 isort................................................(no files to check)Skipped
 flake8...............................................(no files to check)Skipped
