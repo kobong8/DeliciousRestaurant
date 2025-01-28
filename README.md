@@ -160,7 +160,7 @@ or
 pre-commit uninstall --all
 ```
 
-1. [TODO] WARNING 내용 확인 필요
+1. [CLOSED] WARNING 내용 확인 필요 - .pre-commit-config.yaml 파일의 모든 버전을 업데이트
 ```powershell
 pre-commit run
 [INFO] Initializing environment for https://github.com/pre-commit/pre-commit-hooks.
