@@ -12,6 +12,7 @@
 "c:\Program Files\MySQL\MySQL Server 8.4\bin\mysql.exe" -uroot -p
 ```
 
+- 데이터 베이스 생성 및 권한 부여
 ```sql
 SHOW DATABASES;
 CREATE DATABASE {database name};
@@ -20,11 +21,17 @@ GRANT ALL PRIVILEGES ON {database name}.* TO '{user name}'@'%';
 FLUSH PRIVILEGES;
 ```
 
+- PyCharm에서 프로젝트를 생성하거나, startproject 명령으로 프로젝트 생성
+```powershell
+python -m django startproject {porject name} {folder path}
+```
+
 ```powershell
 python manage.py runserver
 python manage.py migrate
 ```
 
+- restaurant 모델 추가
 ```powershell
 python manage.py startapp restaurant
 -> "setting.py" "INSTALLED_APPS"에 추가
@@ -100,7 +107,7 @@ django-environ==0.11.2
 import os
 import environ
 
-environ.Env.read_env(".env")  # .env 파일 불러오기
+environ.Env.read_env("django_proj_example/.env")  # .env 파일 불러오기
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
