@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
@@ -47,3 +48,72 @@ class Restaurant(models.Model):
         "RestaurantCategory", on_delete=models.SET_NULL, blank=True, null=True
     )
     tags = models.ManyToManyField("Tag", blank=True)
+
+
+class CuisineType(models.Model):
+    name = models.CharField("이름", max_length=20)
+
+
+class RestaurantCategory(models.Model):
+    name = models.CharField("이름", max_length=20)
+    cuisine_type = models.ForeignKey(
+        "CuisineType",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+    )
+
+
+class RestaurantImage(models.Model):
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    is_representative = models.BooleanField("대표 이미지 여부", default=False)
+    order = models.PositiveIntegerField("순서", null=True, blank=True)
+    name = models.CharField("이름", max_length=100, null=True, blank=True)
+    image = models.ImageField("이미지", max_length=100, upload_to="restaurant")
+    created_at = models.DateTimeField("생성일", auto_now_add=True, db_index=True)
+    updated_at = models.DateTimeField("수정일", auto_now=True, db_index=True)
+
+
+class RestaurantMenu(models.Model):
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    name = models.CharField("이름", max_length=100)
+    price = models.PositiveIntegerField("가격", default=0)
+    image = models.ImageField(
+        "이미지", upload_to="restaurant-menu", null=True, blank=True
+    )
+    created_at = models.DateTimeField("생성일", auto_now_add=True, db_index=True)
+    updated_at = models.DateTimeField("수정일", auto_now=True, db_index=True)
+
+
+class Review(models.Model):
+    title = models.CharField("제목", max_length=100)
+    author = models.CharField("작성자", max_length=100)
+    profile_image = models.ImageField(
+        "프로필 이미지", upload_to="review-profile", blank=True, null=True
+    )
+    content = models.TextField("내용")
+    rating = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    social_channel = models.ForeignKey(
+        "SocialChannel", on_delete=models.SET_NULL, blank=True, null=True
+    )
+    created_at = models.DateTimeField("생성일", auto_now_add=True, db_index=True)
+    updated_at = models.DateTimeField("수정일", auto_now=True, db_index=True)
+
+
+class ReviewImage(models.Model):
+    review = models.ForeignKey(Review, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    image = models.ImageField(max_length=100, upload_to="review")
+    created_at = models.DateTimeField("생성일", auto_now_add=True, db_index=True)
+    updated_at = models.DateTimeField("수정일", auto_now=True, db_index=True)
+
+
+class SocialChannel(models.Model):
+    name = models.CharField("이름", max_length=100)
+
+
+class Tag(models.Model):
+    name = models.CharField("이름", max_length=100)
