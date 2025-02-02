@@ -100,7 +100,7 @@ django-environ==0.11.2
 import os
 import environ
 
-environ.Env.read_env(".env") # .env 파일 불러오기
+environ.Env.read_env(".env")  # .env 파일 불러오기
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
