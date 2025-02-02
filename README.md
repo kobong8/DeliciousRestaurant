@@ -21,6 +21,11 @@ GRANT ALL PRIVILEGES ON {database name}.* TO '{user name}'@'%';
 FLUSH PRIVILEGES;
 ```
 
+- 데이터 베이스 비밀번호 변경(새로운 비밀번호를 ''로 감싸기)
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED BY '{new password}';
+```
+
 - PyCharm에서 프로젝트를 생성하거나, startproject 명령으로 프로젝트 생성
 ```powershell
 python -m django startproject {porject name} {folder path}
