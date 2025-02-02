@@ -3,7 +3,7 @@
 __pycache__
 
 # setting files
-django_proj_example/.env
+.env
 
 # source code
 source code
