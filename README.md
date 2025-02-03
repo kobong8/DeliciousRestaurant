@@ -169,8 +169,6 @@ git commit -m "commit message" --no-verify
 rm .git/hooks/pre-commit
 or
 pre-commit uninstall
-or
-pre-commit uninstall --all
 ```
 
 1. [CLOSED] WARNING 내용 확인 필요 - .pre-commit-config.yaml 파일의 모든 버전을 업데이트
