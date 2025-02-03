@@ -31,7 +31,7 @@ repos:
     rev: 7.1.1
     hooks:
       - id: flake8
-        args: ["--max-line-length=92", "--ignore=E203"] # 기본값은 79
+        args: ["--max-line-length=92", "--ignore=E203"]
 
 default_language_version:
   python: python3.11
