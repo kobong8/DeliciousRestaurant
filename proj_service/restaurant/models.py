@@ -15,6 +15,9 @@ class Article(models.Model):
         verbose_name = "칼럼"
         verbose_name_plural = "칼럼들"
 
+    def __str__(self):
+        return f"{self.id} - {self.title}"
+
 
 class Restaurant(models.Model):
     name = models.CharField("이름", max_length=100, db_index=True)
@@ -53,9 +56,24 @@ class Restaurant(models.Model):
     )
     tags = models.ManyToManyField("Tag", blank=True)
 
+    class Meta:
+        # 예제 상에서는 모두 레스토랑
+        verbose_name = "음식점"
+        verbose_name_plural = "음식점들"
+
+    def __str__(self):
+        return f"{self.name} {self.branch_name}" if self.branch_name else f"{self.name}"
+
 
 class CuisineType(models.Model):
     name = models.CharField("이름", max_length=20)
+
+    class Meta:
+        verbose_name = "음식 종류"
+        verbose_name_plural = "음식 종류"
+
+    def __str__(self):
+        return self.name
 
 
 class RestaurantCategory(models.Model):
@@ -67,6 +85,13 @@ class RestaurantCategory(models.Model):
         blank=True,
     )
 
+    class Meta:
+        verbose_name = "가게 카테고리"
+        verbose_name_plural = "가게 카테고리"
+
+    def __str__(self):
+        return self.name
+
 
 class RestaurantImage(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
@@ -76,6 +101,13 @@ class RestaurantImage(models.Model):
     image = models.ImageField("이미지", max_length=100, upload_to="restaurant")
     created_at = models.DateTimeField("생성일", auto_now_add=True, db_index=True)
     updated_at = models.DateTimeField("수정일", auto_now=True, db_index=True)
+
+    class Meta:
+        verbose_name = "가게 이미지"
+        verbose_name_plural = "가게 이미지"
+
+    def __str__(self):
+        return f"{self.id}:{self.image}"
 
 
 class RestaurantMenu(models.Model):
@@ -87,6 +119,13 @@ class RestaurantMenu(models.Model):
     )
     created_at = models.DateTimeField("생성일", auto_now_add=True, db_index=True)
     updated_at = models.DateTimeField("수정일", auto_now=True, db_index=True)
+
+    class Meta:
+        verbose_name = "가게 메뉴"
+        verbose_name_plural = "가게 메뉴"
+
+    def __str__(self):
+        return self.name
 
 
 class Review(models.Model):
@@ -106,6 +145,14 @@ class Review(models.Model):
     created_at = models.DateTimeField("생성일", auto_now_add=True, db_index=True)
     updated_at = models.DateTimeField("수정일", auto_now=True, db_index=True)
 
+    class Meta:
+        verbose_name = "리뷰"
+        verbose_name_plural = "리뷰"
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.author}:{self.title}"
+
 
 class ReviewImage(models.Model):
     review = models.ForeignKey(Review, on_delete=models.CASCADE)
@@ -114,10 +161,31 @@ class ReviewImage(models.Model):
     created_at = models.DateTimeField("생성일", auto_now_add=True, db_index=True)
     updated_at = models.DateTimeField("수정일", auto_now=True, db_index=True)
 
+    class Meta:
+        verbose_name = "리뷰이미지"
+        verbose_name_plural = "리뷰이미지"
+
+    def __str__(self):
+        return f"{self.id}:{self.image}"
+
 
 class SocialChannel(models.Model):
     name = models.CharField("이름", max_length=100)
 
+    class Meta:
+        verbose_name = "소셜채널"
+        verbose_name_plural = "소셜채널"
+
+    def __str__(self):
+        return self.name
+
 
 class Tag(models.Model):
     name = models.CharField("이름", max_length=100)
+
+    class Meta:
+        verbose_name = "태그"
+        verbose_name_plural = "태그"
+
+    def __str__(self):
+        return self.name
