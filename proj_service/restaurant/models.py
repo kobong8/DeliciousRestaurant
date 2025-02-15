@@ -147,7 +147,7 @@ class Review(models.Model):
 
     class Meta:
         verbose_name = "리뷰"
-        verbose_name_plural = "리뷰"
+        verbose_name_plural = "리뷰들"
         ordering = ["-created_at"]
 
     def __str__(self):
@@ -185,7 +185,7 @@ class Tag(models.Model):
 
     class Meta:
         verbose_name = "태그"
-        verbose_name_plural = "태그"
+        verbose_name_plural = "태그들"
 
     def __str__(self):
         return self.name
