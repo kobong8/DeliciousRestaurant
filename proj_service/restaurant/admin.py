@@ -1,6 +1,16 @@
 from django.contrib import admin
 
-from .models import Article, Restaurant, Tag
+from .models import (
+    Article,
+    Restaurant,
+    RestaurantCategory,
+    RestaurantImage,
+    RestaurantMenu,
+    Review,
+    ReviewImage,
+    SocialChannel,
+    Tag,
+)
 
 
 @admin.register(Article)
@@ -31,6 +41,16 @@ class TagAdmin(admin.ModelAdmin):
     search_fields = ["name"]
 
 
+class RestaurantMenuInline(admin.TabularInline):
+    model = RestaurantMenu
+    extra = 1
+
+
+class RestaurantImageInline(admin.TabularInline):
+    model = RestaurantImage
+    extra = 1
+
+
 @admin.register(Restaurant)
 class RestaurantAdmin(admin.ModelAdmin):
     list_display = [
@@ -56,3 +76,31 @@ class RestaurantAdmin(admin.ModelAdmin):
     search_fields = ["name", "branch_name"]
     list_filter = ["tags"]
     autocomplete_fields = ["tags"]
+    inlines = [RestaurantMenuInline, RestaurantImageInline]
+
+
+@admin.register(RestaurantCategory)
+class RestaurantCategoryIAdmin(admin.ModelAdmin):
+    list_display = ["name"]
+    fields = ["cuisine_type", "name"]
+
+
+class ReviewImageInline(admin.TabularInline):
+    model = ReviewImage
+    extra = 1
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ["id", "restaurant_name", "author", "rating", "content_partial"]
+    inlines = [ReviewImageInline]
+
+    # 인스턴스를 생성할때 인라인 표시 안하도록
+    def get_inline_instances(self, request, obj=None):
+        return obj and super().get_inline_instances(request, obj) or []
+
+
+@admin.register(SocialChannel)
+class SocialChannelAdmin(admin.ModelAdmin):
+    list_display = ["id", "name"]
+    fields = ["name"]
