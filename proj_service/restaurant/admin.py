@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Article, Restaurant
+from .models import Article, Restaurant, Tag
 
 
 @admin.register(Article)
@@ -18,6 +18,17 @@ class ArticleAdmin(admin.ModelAdmin):
     list_filter = ["show_at_index", "is_published"]
     date_hierarchy = "created_at"
     actions = ["make_published"]
+
+    @admin.action(description="선택한 컬럼을 공개상태로 변경합니다.")
+    def make_published(self, request, queryset):
+        queryset.update(is_published=True)
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ["id", "name"]
+    fields = ["name"]
+    search_fields = ["name"]
 
 
 @admin.register(Restaurant)
