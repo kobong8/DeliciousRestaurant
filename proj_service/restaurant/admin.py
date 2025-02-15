@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .models import (
     Article,
+    CuisineType,
     Restaurant,
     RestaurantCategory,
     RestaurantImage,
@@ -83,6 +84,13 @@ class RestaurantAdmin(admin.ModelAdmin):
 class RestaurantCategoryIAdmin(admin.ModelAdmin):
     list_display = ["name"]
     fields = ["cuisine_type", "name"]
+
+
+@admin.register(CuisineType)
+class CuisineTypeAdmin(admin.ModelAdmin):
+    list_display = ["name"]
+    fields = ["name"]
+    inlines = [RestaurantCategory]
 
 
 class ReviewImageInline(admin.TabularInline):
