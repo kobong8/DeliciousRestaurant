@@ -11,6 +11,10 @@ class Article(models.Model):
     created_at = models.DateTimeField("생성일", auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = "칼럼"
+        verbose_name_plural = "칼럼들"
+
 
 class Restaurant(models.Model):
     name = models.CharField("이름", max_length=100, db_index=True)
