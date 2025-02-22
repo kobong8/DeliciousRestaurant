@@ -80,6 +80,11 @@ class RestaurantAdmin(admin.ModelAdmin):
     inlines = [RestaurantMenuInline, RestaurantImageInline]
 
 
+class RestaurantCategoryInline(admin.TabularInline):
+    model = RestaurantCategory
+    extra = 1
+
+
 @admin.register(RestaurantCategory)
 class RestaurantCategoryIAdmin(admin.ModelAdmin):
     list_display = ["name"]
@@ -90,7 +95,7 @@ class RestaurantCategoryIAdmin(admin.ModelAdmin):
 class CuisineTypeAdmin(admin.ModelAdmin):
     list_display = ["name"]
     fields = ["name"]
-    inlines = [RestaurantCategory]
+    inlines = [RestaurantCategoryInline]
 
 
 class ReviewImageInline(admin.TabularInline):
@@ -103,7 +108,6 @@ class ReviewAdmin(admin.ModelAdmin):
     list_display = ["id", "restaurant_name", "author", "rating", "content_partial"]
     inlines = [ReviewImageInline]
 
-    # 인스턴스를 생성할때 인라인 표시 안하도록
     def get_inline_instances(self, request, obj=None):
         return obj and super().get_inline_instances(request, obj) or []
 

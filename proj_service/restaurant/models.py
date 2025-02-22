@@ -150,6 +150,14 @@ class Review(models.Model):
         verbose_name_plural = "리뷰들"
         ordering = ["-created_at"]
 
+    @property
+    def restaurant_name(self):
+        return self.restaurant.name
+
+    @property
+    def content_partial(self):
+        return self.content[:20]
+
     def __str__(self):
         return f"{self.author}:{self.title}"
 
