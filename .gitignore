@@ -10,6 +10,11 @@ __pycache__
 
 # source code
 source code
+
+# tests
 proj_service/article
 proj_service/review
 proj_service/restaurant/test-image*.png
+
+# exe files
+*.exe
