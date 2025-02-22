@@ -1,18 +1,21 @@
 # Delicious Restaurant
 
-- Fast  campus 강의 "파이썬으로 개발하는 빅데이터 기반 맛집 추천 서비스 (ft. Django, FastAPI)" 를 수강한 내용에 대한 정리
+- Fast campus 강의 "파이썬으로 개발하는 빅데이터 기반 맛집 추천 서비스 (ft. Django, FastAPI)" 를 수강한 내용에 대한 정리
 - 실습 코드: [파이썬으로 개발하는 빅데이터 기반 맛집 추천 서비스 (ft. Django, FastAPI)](https://github.com/fastcampus-plan1/Online-Backend-Python)
 - 2025.01~
 
-## django_proj_example
+## proj_example 및 proj_service
+
 - NOTE: setting.py 파일은 DB 정보를 포함하고 있어 제외됨
 
 - CODE
+
 ```powershell
 "c:\Program Files\MySQL\MySQL Server 8.4\bin\mysql.exe" -uroot -p
 ```
 
 - 데이터 베이스 생성 및 권한 부여
+
 ```sql
 SHOW DATABASES;
 CREATE DATABASE {database name};
@@ -22,12 +25,14 @@ FLUSH PRIVILEGES;
 ```
 
 - 데이터 베이스 비밀번호 변경(새로운 비밀번호를 ''로 감싸기)
+
 ```sql
 ALTER USER 'root'@'localhost' IDENTIFIED BY '{new password}';
 FLUSH PRIVILEGES;
 ```
 
 - PyCharm에서 프로젝트를 생성하거나, startproject 명령으로 프로젝트 생성
+
 ```powershell
 python -m django startproject {porject name} {folder path}
 ```
@@ -38,6 +43,7 @@ python manage.py migrate
 ```
 
 - restaurant 모델 추가
+
 ```powershell
 python manage.py startapp restaurant
 -> "setting.py" "INSTALLED_APPS"에 추가
@@ -69,7 +75,17 @@ python manage.py createsuperuser
 python manage.py changepassword USER_ID
 ```
 
+- migration 파일 정리
+
+```powershell
+python manage.py migrate restaurant zero
+(특정 migrate으로 돌아가기) python manage.py migrate restaurant 0001_contents
+python manage.py makemigrations
+python manage.py migrate
+```
+
 - TODO LIST
+
 1. [CLOSED] Not Found: /favicon.ico - runserver에서 발생 - favicon은 웹페이지 탭에 작게 보이는 이미지, 추가할 경우 오류 발생X
 
 ```text
@@ -78,18 +94,21 @@ Not Found: /favicon.ico
 ```
 
 2. [CLOSED] Pillow is not installed - models.ImageField를 사용하려고 할 경우 발생
+
 ```text
 ERRORS: restaurant.Restaurant.image: (fields.E210) Cannot use ImageField because Pillow is not installed.
         HINT: Get Pillow at https://pypi.org/project/Pillow/ or run command "python -m pip install Pillow".
 ```
 
 3. [CLOSED] Unknown column - 설정 변경 후, makemigrations와 migrate 재실행 필요
+
 ```text
 OperationalError at /admin/restaurant/restaurant/
 (1054, "Unknown column 'restaurant_restaurant.category' in 'field list'")
 ```
 
 4. [*CLOSED] rating_count = models.PositiveIntegerField("별점 개수") - 우선적으로 null=True 사용, 추후 확인 필요
+
 ```text
 It is impossible to add a non-nullable field 'rating_count' to restaurant without specifying a default. This is because the database needs something to populate existing rows.
 Please select a fix:
@@ -103,7 +122,8 @@ rating_count = models.PositiveIntegerField("별점 개수", null=True)
 ```
 
 5. [CLOSED] .env 파일 사용하기
-AttributeError: 'NoneType' object has no attribute 'startswith'
+   AttributeError: 'NoneType' object has no attribute 'startswith'
+
 ```text
 # requirements.txt
 django-environ==0.11.2
@@ -128,7 +148,7 @@ DATABASES = {
 ```
 
 6. [CLOSED] from ..restaurant.models import Restaurant <br/>
-ImportError: attempted relative import beyond top-level package
+   ImportError: attempted relative import beyond top-level package
 
 ```python:serializers.py
 # serializers.py
@@ -149,7 +169,9 @@ from restaurant.models import Restaurant
 10. [TODO] 쿼리에서 "__" 사용을 어떻게 사용하는지
 
 ## pre-commit_test
+
 - pre-commit 설치 및 실행
+
 ```powershell
 pip install per-commit
 
@@ -160,11 +182,13 @@ pre-commit run
 ```
 
 - pre-commit 건너뛰기
+
 ```powershell
 git commit -m "commit message" --no-verify
 ```
 
 - pre-commit 삭제하기
+
 ```powershell
 rm .git/hooks/pre-commit
 or
@@ -172,6 +196,7 @@ pre-commit uninstall
 ```
 
 1. [CLOSED] WARNING 내용 확인 필요 - .pre-commit-config.yaml 파일의 모든 버전을 업데이트
+
 ```powershell
 pre-commit run
 [INFO] Initializing environment for https://github.com/pre-commit/pre-commit-hooks.
@@ -185,7 +210,9 @@ black................................................(no files to check)Skipped
 isort................................................(no files to check)Skipped
 flake8...............................................(no files to check)Skipped
 ```
+
 완료 이후 적용할 때는 git add 및 git commit
+
 ```powershell
 pre-commit run
 [ERROR] Your pre-commit configuration is unstaged.
