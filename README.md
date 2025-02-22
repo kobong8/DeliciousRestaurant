@@ -265,6 +265,13 @@ flake8...............................................(no files to check)Skipped
 ```
 
 2. [CLOSED] isort, autoflake, flake8의 차이
+
 - flake8: 코드의 스타일과 오류를 검사하고 리포트
 - autoflake: 코드 내 불필요한 import 등 정리를 자동으로 수행
 - isort: 남아 있는 import 문을 정렬하고 그룹화
+
+## Web Crawler
+
+```powershell
+pip install webdriver-manager
+```
