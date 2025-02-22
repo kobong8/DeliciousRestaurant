@@ -84,22 +84,34 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-- test 실행하기
+- test 실행하기 경로 및 명령어
+
 ```text
-- Case 01
 proj_service
 ├ manage.py
 ├ proj
 └ restaurant
   ├ migrations
+  ├ tests
+  │ ├ __init__.py
+  │ └ test_models.py
   ├ __init__.py
   ├ tests.py
   └ 그외 파일들
 ```
 
 ```powershell
-- Case 01
 python manage.py test
+
+Found 10 test(s).
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+..........
+----------------------------------------------------------------------
+Ran 10 tests in 0.023s
+
+OK
+Destroying test database for alias 'default'...
 ```
 
 - TODO LIST
