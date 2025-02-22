@@ -13,7 +13,7 @@ class Article(models.Model):
 
     class Meta:
         verbose_name = "칼럼"
-        verbose_name_plural = "칼럼들"
+        verbose_name_plural = "칼럼"
 
     def __str__(self):
         return f"{self.id} - {self.title}"
@@ -57,9 +57,8 @@ class Restaurant(models.Model):
     tags = models.ManyToManyField("Tag", blank=True)
 
     class Meta:
-        # 예제 상에서는 모두 레스토랑
-        verbose_name = "음식점"
-        verbose_name_plural = "음식점들"
+        verbose_name = "레스토랑"
+        verbose_name_plural = "레스토랑"
 
     def __str__(self):
         return f"{self.name} {self.branch_name}" if self.branch_name else f"{self.name}"
@@ -147,7 +146,7 @@ class Review(models.Model):
 
     class Meta:
         verbose_name = "리뷰"
-        verbose_name_plural = "리뷰들"
+        verbose_name_plural = "리뷰"
         ordering = ["-created_at"]
 
     @property
@@ -193,7 +192,7 @@ class Tag(models.Model):
 
     class Meta:
         verbose_name = "태그"
-        verbose_name_plural = "태그들"
+        verbose_name_plural = "태그"
 
     def __str__(self):
         return self.name
