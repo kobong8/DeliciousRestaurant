@@ -84,6 +84,24 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+- test 실행하기
+```text
+- Case 01
+proj_service
+├ manage.py
+├ proj
+└ restaurant
+  ├ migrations
+  ├ __init__.py
+  ├ tests.py
+  └ 그외 파일들
+```
+
+```powershell
+- Case 01
+python manage.py test
+```
+
 - TODO LIST
 
 1. [CLOSED] Not Found: /favicon.ico - runserver에서 발생 - favicon은 웹페이지 탭에 작게 보이는 이미지, 추가할 경우 오류 발생X
