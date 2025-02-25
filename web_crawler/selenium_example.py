@@ -15,6 +15,10 @@ if __name__ == "__main__":
     search_input.send_keys("강남구 카페")
     search_input.send_keys(Keys.ENTER)
 
+    # show_more_btn의 역할 여기 위치하는게 맞는지?
+    show_more_btn = driver.find_element(By.ID, "info.search.place.more")
+    show_more_btn.click()
+
     wait = WebDriverWait(driver, 10)
     wait.until(ec.visibility_of_element_located((By.ID, "info.search.place.list")))
 
