@@ -1,5 +1,8 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.edge.service import Service
+from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
@@ -8,3 +11,16 @@ if __name__ == "__main__":
     driver = webdriver.Edge(service=service)
     driver.get("https://map.kakao.com/")
     wait = WebDriverWait(driver, 10)
+
+    search_input = driver.find_element(By.ID, "search.keyword.query")
+    search_input.send_keys("강남구 카페")
+    search_input.send_keys(Keys.ENTER)
+
+    # wait = WebDriverWait(driver, 10)
+    wait.until(ec.visibility_of_element_located((By.ID, "info.search.place.list")))
+
+    place_list = driver.find_element(By.ID, "info.search.place.list")
+    shop_list = place_list.get_attribute("innerHTML")
+
+    print(place_list)
+    print(shop_list)
