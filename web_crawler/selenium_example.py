@@ -23,3 +23,5 @@ if __name__ == "__main__":
 
     print(place_list)
     print(shop_list)
+
+    driver.quit()
