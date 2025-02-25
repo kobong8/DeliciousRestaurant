@@ -10,13 +10,12 @@ if __name__ == "__main__":
     service = Service(EdgeChromiumDriverManager().install())
     driver = webdriver.Edge(service=service)
     driver.get("https://map.kakao.com/")
-    wait = WebDriverWait(driver, 10)
 
     search_input = driver.find_element(By.ID, "search.keyword.query")
     search_input.send_keys("강남구 카페")
     search_input.send_keys(Keys.ENTER)
 
-    # wait = WebDriverWait(driver, 10)
+    wait = WebDriverWait(driver, 10)
     wait.until(ec.visibility_of_element_located((By.ID, "info.search.place.list")))
 
     place_list = driver.find_element(By.ID, "info.search.place.list")
